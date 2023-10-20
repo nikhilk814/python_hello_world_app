@@ -147,23 +147,24 @@ http://<ec2-instance-public-ip>:8080/restart
 mkdir hello-World-app
 cd  hello-World-app
 vi app.py
-
-### This line imports the Flask class from the Flask framework, which is used to create web applications.
+```
+```
+# This line imports the Flask class from the Flask framework, which is used to create web applications.
 from flask import Flask
 
-### built-in Python variable that represents the current module.
+# built-in Python variable that represents the current module.
 app = Flask(__name__)
 
-### it specifies the root URL, which means that when you access the base URL
+# it specifies the root URL, which means that when you access the base URL
 @app.route('/')
 
-### This defines a Python function named hello
+# This defines a Python function named hello
 def hello():
 
-### This line inside the hello function returns a simple string as the response to the client. 
+# This line inside the hello function returns a simple string as the response to the client. 
     return "Hello, World! welcome to PearlThoughts. subscribe Now"
 
-### ensures that the Flask app is only run if this script is the main entry point
+# ensures that the Flask app is only run if this script is the main entry point
 if __name__ == '__main__':
 
 enables debugging mod, The server will listen on port 8088 and all available network interfaces . 
