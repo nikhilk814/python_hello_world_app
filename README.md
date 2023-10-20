@@ -1,5 +1,6 @@
 # Hello-world-python-app
-## Continuous Integration and Continuous Delivery (CI/CD) pipeline and deploy code changes to production. Using git, github, Jenkins, and Docker, AWS EC2 by building a Hello-World application, building, testing, and deploying it to Docker Hub.
+
+### deploy hello-world app in python using Continuous Integration and Continuous Delivery (CI/CD) pipeline. Using git, github, Jenkins, and Docker, AWS EC2 by building a Hello-World application, building, testing, and deploying it to Docker Hub.
 
 ## Objectives
 - Containerize a simple Flask application using Docker to make it more portable and scalable.
