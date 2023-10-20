@@ -15,4 +15,8 @@
 -	Github account.
 -	Jenkins Pipeline
 
-
+## AWS EC2 Instance
+- Go to AWS Console
+- Instances(running)
+- Launch instances
+![Screenshot 2023-10-20 101330](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/927c65cf-2637-4d9f-860e-dfeae4d43384)
