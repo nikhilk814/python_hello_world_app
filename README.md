@@ -321,7 +321,7 @@ pipeline {
 ```
 ![jenkins file](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/5bb84524-6e30-43e7-b334-b8af6f1fb057)
 
-## push hello-worrld application code into remote github repository
+## push hello-world application code into remote github repository
 ### create github remote repository
 
 ![gitrepo](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/d2636442-34f1-4294-ba73-9b2d87624d82)
@@ -351,7 +351,7 @@ $ git push -u origin master #  Pushes your local "master" branch to the remote r
 
 ![gitpush](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/00fd7312-3da0-4dea-a984-cded0b68f274)
 
-**note for github password we have to create github personal access tokens**
+note: for github password we have to create github personal access tokens
 
 ![git token generation](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/54038b49-37fa-4797-80b5-d15215d5cbb3)
 
