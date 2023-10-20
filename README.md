@@ -12,9 +12,9 @@
 ## Pre-requisites
 -	AWS account and EC2.
 -	Docker Hub account.
--	Git version control and experience with command line interface.
+-	Git version control with command line interface.
 -	Github account.
--	Jenkins Pipeline
+-	Jenkins
 
 ## AWS EC2 Instance
 - Go to AWS Console
