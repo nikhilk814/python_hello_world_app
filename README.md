@@ -414,9 +414,9 @@ STEP 7: Go again to your pipeline and check the box shown below:
 ![jenkinbuild](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/6856ffb8-d8cb-462b-8b51-193d0b7d4cb1)
 
 - apply and save
-- Change the message of the app.py file in the ‘hello’ function to whatever you want.
+- Change the message of the app.py file in the ‘hello’ function to added subcribe Now.
 - Add, commit and push your changes.
-- Go to your Jenkins pipeline and see how a new build is auto triggered.
+- Go to Jenkins pipeline and see how a new build is auto triggered.
 
 ![subrcibe](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/bad494d6-f61a-44d7-97e4-ba0c7a9b8be6)
 
