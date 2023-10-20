@@ -318,7 +318,29 @@ pipeline {
 ```
 ![jenkins file](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/5bb84524-6e30-43e7-b334-b8af6f1fb057)
 
-## Add hello-world-app directory file into remote github repository
+## push hello-worrld application code into remote github repository
+### create github remote repository
+![gitrepo](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/d2636442-34f1-4294-ba73-9b2d87624d82)
+
+
 ```
 $ cd  hello-World-app
-$ git init
+$ git init          # Initializes a new Git repository in the current directory.
+$ git add Dockerfile  # Add docker file in the current directory to the staging area. 
+$ git commit -m "add docker file"  # Commits the staged changes with a commit message.
+$ git add Jenkinsfile
+$ git commit -m "add jenkinsfile file"
+$ git add requirements.txt
+$ git commit -m "add requirements.txt file"
+$ git add app.py
+$ git commit -m "add app.py file"
+$ git add docker-compose.yml
+$ git commit -m "add docker-compose.yml file"
+$ git status           # Displays the current status of your Git repository, showing which files have been modified, staged, or committed.
+$ git branch -M master  # Renames the current branch to "master." This is typically done after the initial commit to set the default branch name.
+$ git add remote origin https://github.com/nikhilk814/python_hello_world_app.git # used to set up a remote 
+$ git push -u origin master #  Pushes your local "master" branch to the remote repository named "origin." The -u flag sets up, you can use git push without specifying the branch and remote.
+```
+![commit init](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/a8a092f0-e6d6-491a-960c-155ef300c479)
+![docker commits](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/d616132c-5cdd-4839-be1a-d2884a4573a1)
+
