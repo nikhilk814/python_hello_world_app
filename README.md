@@ -40,6 +40,7 @@
 
 ## Install Jenkins with the following script.
 ```
+$ vi jenkins.sh
 #!/bin/bash
 # This script installs Jenkins on an Ubuntu server
 
@@ -98,6 +99,8 @@ After you login to Jenkins, - Run the command to copy the Jenkins Admin Password
 
 ## Install Docker with the following script.
 ```
+$ vi docker.sh
+
 #!/bin/bash
 
 # Update package list
@@ -135,18 +138,18 @@ sudo systemctl status docker
 
 ## Grant Jenkins user permission to docker deamon.
 ```
-sudo su - 
-usermod -aG docker jenkins
-systemctl restart docker
+$ sudo su - 
+$ usermod -aG docker jenkins
+$ systemctl restart docker
 ```
 Once you are done with the above steps, it is better to restart Jenkins.
 http://<ec2-instance-public-ip>:8080/restart
 
 ## create Directory and add python code for python application
 ```
-mkdir hello-World-app
-cd  hello-World-app
-vi app.py
+$ mkdir hello-World-app
+$ cd  hello-World-app
+$ vi app.py
 ```
 ```
 # This line imports the Flask class from the Flask framework, which is used to create web applications.
@@ -167,9 +170,155 @@ def hello():
 # ensures that the Flask app is only run if this script is the main entry point
 if __name__ == '__main__':
 
-enables debugging mod, The server will listen on port 8088 and all available network interfaces . 
+# enables debugging mod, The server will listen on port 8088 and all available network interfaces . 
     app.run(debug=True, host='0.0.0.0', port=8088)
 ```
 ![appcode](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/9761b771-6fde-4635-b49a-d08cba45e1e9)
 
+## create requirements.txt file for specifying the dependencies for the project.
+```
+$ vi requirements.txt
+Flask==2.0.1
+Werkzeug==2.0.1
+```
 
+## Create Dockerfile
+```
+$ vi Dockerfile
+
+#  This specifies the base image for the container, which is an Alpine Linux image with Python 3.9 pre-installed.
+FROM python:3.9-alpine
+
+# This sets the working directory inside the container to /app.
+WORKDIR /app
+
+# This copies the requirements.txt file from the host to the /app directory inside the container.
+COPY requirements.txt .
+
+# This creates a Python virtual environment in the /venv directory inside the container for isolating Python dependencies for your application.
+RUN python -m venv /venv
+
+# This sets the PATH environment variable to include the /venv/bin directory, which allows you to use the Python and pip commands from the virtual environment.
+ENV PATH="/venv/bin:$PATH"
+
+# This  upgrades pip and installs the Python packages listed in requirements.txt into the virtual environment. The --no-cache-dir option is used to avoid caching the downloaded package files in the container to reduce image size.
+RUN pip install --no-cache-dir --upgrade pip && pip install --no-cache-dir -r requirements.txt
+
+This copies the entire contents of the host directory to the current directory (/app) inside the container. 
+COPY . .
+
+This specifies the command to run when the container is started.
+CMD ["python", "app.py"]
+
+the container will listen on port 8088.
+EXPOSE 8088
+```
+![dockerfile](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/a1625af8-b12c-4ecd-97dc-e0a5bde522ae)
+
+## create docker-compose yml file used to manage multi-container Docker applications.
+```
+$ vi docker-compose.yml
+# specifies the version of the Docker Compose file format being used.
+version : "3.3"
+
+# you define the services for  application, there's a single service named "web."
+services :
+  web :
+# specifies the Docker image that will be used for the "web" service. 
+     image : nikhilk814/hello-world-app:v1
+# used to map ports from the host machine to the container. 
+     ports :
+         - "8088:8088"
+```
+![docker-compose](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/b298cb64-495e-42c4-8b09-5e462ef9d204)
+
+## create Jenkinsfile for CICD Pipeline
+```
+$ vi Jenkinsfile
+
+# defines the start of a Jenkins Pipeline.
+pipeline {
+
+# defines environment variables that will be used throughout the pipeline.
+  environment {
+
+# A variable storing the name of the Docker image to be built
+    imagename = "nikhilk814/hello-world-app:v1"
+
+# A variable storing the name of the Docker registry credential to be used
+    registryCredential= 'dockerhub'
+
+# An empty variable that will be assigned later to represent the Docker image.
+    dockerImage = ''
+
+  }
+#  This specifies that the pipeline can run on any available agent
+  agent any
+# This block defines the various stages of the pipeline.
+  stages {
+
+# This stage checks out the source code from a GitHub repository using the Git plugin. 
+    stage('Checkout SCM') {
+
+      steps {
+
+        git([url: 'https://github.com/nikhilk814/python_hello_world_app.git', branch: 'master', credentialsId: 'github'])
+      }
+
+    }
+
+# In this stage, a Docker image is built using the docker.build command.
+    stage('Building image') {
+
+      steps{
+
+        script {
+
+          dockerImage = docker.build imagename
+        }
+
+      }
+
+    }
+# This stage deploys the Docker image and pushes it to a Docker registry. It uses the docker.withRegistry block to manage Docker credentials and push the image.
+# The image is tagged with the Jenkins build number and "v1" before pushing it to the registry. 
+    stage('Deploy and Push Image') {
+
+      steps{
+
+        script {
+
+          docker.withRegistry( '', registryCredential ) {
+
+            dockerImage.push("$BUILD_NUMBER")
+
+             dockerImage.push('v1')
+
+          }
+
+        }
+
+      }
+
+    }
+# This stage releases the application using Docker Compose. It stops any existing containers and brings up the new containers using the docker-compose down and docker-compose up -d commands.
+    stage('Release') {
+
+      steps{
+
+         sh "docker-compose down && docker-compose up -d"
+
+      }
+
+    }
+
+  }
+
+}
+```
+![jenkins file](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/5bb84524-6e30-43e7-b334-b8af6f1fb057)
+
+## Add hello-world-app directory file into remote github repository
+```
+$ cd  hello-World-app
+$ git init
