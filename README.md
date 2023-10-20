@@ -348,6 +348,7 @@ $ git push -u origin master #  Pushes your local "master" branch to the remote r
 **note for github password we have to create github personal access tokens**
 
 ![gittokem](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/a018545f-1688-4be5-ac4a-fe3879c7e53b)
+
 ![git token generation](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/54038b49-37fa-4797-80b5-d15215d5cbb3)
 ![gitremotefile](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/6b02d917-9232-4665-9e83-bac521c3b6d6)
 
