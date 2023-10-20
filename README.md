@@ -94,7 +94,9 @@ After you login to Jenkins, - Run the command to copy the Jenkins Admin Password
 - Restart Jenkins after the plugin is installed.
 
 ![ss](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/247730c7-c997-4c19-b2ac-0f47bcac317e)
+
 ![plus](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/200b1e56-36e7-4a4e-b7f8-fc9f65015076)
+
 ![dockerplugin](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/456ee9b1-99c4-4d57-b01e-91a2a021bcfc)
 
 ## Install Docker with the following script.
@@ -134,6 +136,7 @@ su - ${USER}
 sudo systemctl status docker
 ```
 ![dockerinsall](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/98bda7b6-785e-46e5-8613-c292c82a8d16)
+
 ![docker status](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/dae44696-ba49-448b-9896-a0f57040877a)
 
 ## Grant Jenkins user permission to docker deamon.
@@ -320,6 +323,7 @@ pipeline {
 
 ## push hello-worrld application code into remote github repository
 ### create github remote repository
+
 ![gitrepo](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/d2636442-34f1-4294-ba73-9b2d87624d82)
 
 
@@ -342,12 +346,15 @@ $ git add remote origin https://github.com/nikhilk814/python_hello_world_app.git
 $ git push -u origin master #  Pushes your local "master" branch to the remote repository named "origin." The -u flag sets up, you can use git push without specifying the branch and remote.
 ```
 ![commit init](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/a8a092f0-e6d6-491a-960c-155ef300c479)
+
 ![docker commits](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/d616132c-5cdd-4839-be1a-d2884a4573a1)
+
 ![gitpush](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/00fd7312-3da0-4dea-a984-cded0b68f274)
 
 **note for github password we have to create github personal access tokens**
 
 ![git token generation](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/54038b49-37fa-4797-80b5-d15215d5cbb3)
+
 ![gitremotefile](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/6b02d917-9232-4665-9e83-bac521c3b6d6)
 
 ## Create Jenkins Job for CICD Pipeline
@@ -357,16 +364,22 @@ Step 1: create dockerhub and gihub crediential for cicd pipeline
 ****In your Jenkins server go to Manage Jenkins -> Credentials -> System -> Global credentials -> + Add credentials. Enter your dockerhub username, password, github username, the token you created and a brief description of the credentials.****
 
 ![image](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/cc2baaa7-3395-458b-b406-ee9ed1557197)
+
 ![image](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/95636455-166f-4f28-aa9c-1a4a7d5b5e16)
+
 ![image](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/bcb4effd-d305-46f5-8307-3e509986f094)
+
 ![dockerhub](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/faf8841c-499f-41fe-9f93-49a2a0e2244f)
+
 ![cred](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/cdb894ad-0910-4649-8453-1baf9f8c23f0)
 
 Step 2: create Jenkins job
 - In your Dashboard go to New Item -> enter item name -> select Pipeline project -> ok  
+
 ![image](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/a4d2f2b5-890c-4139-9a72-efe12da19130)
 
 - In the Pipeline section, under SCM select ‘Git’ and enter your repository.
+
 ![jenkin-pipe](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/02037da0-e3b3-4dc2-890d-5cfa2e098b9b)
 
 - Build the pipeline.
@@ -374,13 +387,17 @@ Step 2: create Jenkins job
 ![jenkinsjon](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/72371b5b-5b20-40df-9ce6-3341ebf3e6b7)
 
 step 3: Verify if the image was uploaded in the Docker Hub repository as below.
+
 ![do](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/b6a0b71b-96db-4033-ba30-0f1cd7873c6e)
 
 step 4 : check the docker container is running
+
 ![docker ps](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/c3ef66d9-0866-4330-b30a-31ee78cfa4d7)
 
 step 5: Run the application  EC2-IP-Address:8088
-![image](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/eed5f0e0-793d-488a-916c-d17e49bac1e3)
+
+![result](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/0f8125bd-b45c-43a1-8525-87914a961b7b)
+
 
 step 6: add a webhook to your pipeline to trigger a build whenever there is a change in your Github repository.
 - Go to settings in your Github repository and then to ‘Webhooks’.
@@ -388,10 +405,12 @@ step 6: add a webhook to your pipeline to trigger a build whenever there is a ch
 - Content type: application/json
 - Trigger only on the push event
   
-![image](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/eed5f0e0-793d-488a-916c-d17e49bac1e3)
+![webhook](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/a1402159-81ab-4c83-9bba-c9ff1f31c58e)
+
 ![image](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/9d2df2ab-afd9-43a5-a516-bd0c03650803)
 
 STEP 7: Go again to your pipeline and check the box shown below:
+
 ![jenkinbuild](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/6856ffb8-d8cb-462b-8b51-193d0b7d4cb1)
 
 - apply and save
@@ -400,6 +419,7 @@ STEP 7: Go again to your pipeline and check the box shown below:
 - Go to your Jenkins pipeline and see how a new build is auto triggered.
 
 ![subrcibe](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/bad494d6-f61a-44d7-97e4-ba0c7a9b8be6)
+
 ![udpate](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/e19241d7-27eb-4c35-bd11-f0364990e955)
 
 
