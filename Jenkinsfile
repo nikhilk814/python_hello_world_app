@@ -18,7 +18,7 @@ pipeline {
 
       steps {
 
-        git([url: 'https://github.com/nikhilk814/Hello-world-python-app.git', branch: 'master', credentialsId: 'github'])
+        git([url: 'https://github.com/nikhilk814/python_hello_world_app.git', branch: 'master', credentialsId: 'github'])
 
 
 
