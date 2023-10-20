@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 def hello():
 
-    return "Hello, World! welcome to PearlThoughts"
+    return "Hello, World! welcome to PearlThoughts. subscribe Now"
 
 
 
