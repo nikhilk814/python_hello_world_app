@@ -130,8 +130,45 @@ su - ${USER}
 # Verify Docker is installed and working
 sudo systemctl status docker
 ```
-![dockerinsall](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/35ec4310-bf68-4429-860d-67aa0240db89)
 ![dockerinsall](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/98bda7b6-785e-46e5-8613-c292c82a8d16)
+![docker status](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/dae44696-ba49-448b-9896-a0f57040877a)
 
+## Grant Jenkins user permission to docker deamon.
+```
+sudo su - 
+usermod -aG docker jenkins
+systemctl restart docker
+```
+Once you are done with the above steps, it is better to restart Jenkins.
+http://<ec2-instance-public-ip>:8080/restart
+
+## create Directory and add python code for python application
+```
+mkdir hello-World-app
+cd  hello-World-app
+vi app.py
+
+### This line imports the Flask class from the Flask framework, which is used to create web applications.
+from flask import Flask
+
+### built-in Python variable that represents the current module.
+app = Flask(__name__)
+
+### it specifies the root URL, which means that when you access the base URL
+@app.route('/')
+
+### This defines a Python function named hello
+def hello():
+
+### This line inside the hello function returns a simple string as the response to the client. 
+    return "Hello, World! welcome to PearlThoughts. subscribe Now"
+
+### ensures that the Flask app is only run if this script is the main entry point
+if __name__ == '__main__':
+
+enables debugging mod, The server will listen on port 8088 and all available network interfaces . 
+    app.run(debug=True, host='0.0.0.0', port=8088)
+```
+![appcode](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/9761b771-6fde-4635-b49a-d08cba45e1e9)
 
 
