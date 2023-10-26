@@ -393,9 +393,10 @@ step 3: Verify if the image was uploaded in the Docker Hub repository as below.
 
 step 4 : check the docker container is running
 
-![docker ps](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/c3ef66d9-0866-4330-b30a-31ee78cfa4d7)
+![container](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/694d50b5-2cd9-4723-9c4e-71b9818c93e3)
 
-step 5: Run the application  EC2-IP-Address:8088
+### First output
+step 5: Run the application  EC2-IP-Address:8088 
 
 ![result](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/0f8125bd-b45c-43a1-8525-87914a961b7b)
 
@@ -421,6 +422,7 @@ STEP 7: Go again to your pipeline and check the box shown below:
 
 ![subrcibe](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/bad494d6-f61a-44d7-97e4-ba0c7a9b8be6)
 
+### Second output when changes in github reposiotry
 ![udpate](https://github.com/nikhilk814/python_hello_world_app/assets/116155594/e19241d7-27eb-4c35-bd11-f0364990e955)
 
 
